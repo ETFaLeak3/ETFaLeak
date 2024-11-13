@@ -62,6 +62,12 @@ Cela aura pour effet d'installer les dépendances **NodeJS** du projet.
 
 ### 💻 Lancer le projet en mode développement
 
+Avant tout, veuillez __dupliquer__ le fichier `.env.example` et le __renommer__ en `.env`. Vous pouvez le faire en ligne de commande ou directement dans l'explorateur de fichiers.
+
+```bash
+cp .env.example .env
+```
+
 Maintenant, vous allez devoir lancer le serveur de développement du **front-end**. Rendez-vous dans votre seconde console et faites la commande suivante :
 
 ```bash
