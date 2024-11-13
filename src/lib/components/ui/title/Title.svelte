@@ -2,6 +2,6 @@
     
 </script>
 
-<h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-white">
+<h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-black/10">
     <slot/>
 </h1>
