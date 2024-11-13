@@ -68,6 +68,12 @@ Avant tout, veuillez __dupliquer__ le fichier `.env.example` et le __renommer__ 
 cp .env.example .env
 ```
 
+Ensuite, vous devez créez une dossier `database` à la racine du projet. C'est ici que sera stockée la base de données. Vous pouvez le faire en ligne de commande ou directement dans l'explorateur de fichiers.
+
+```bash
+mkdir database
+```
+
 Maintenant, vous allez devoir lancer le serveur de développement du **front-end**. Rendez-vous dans votre seconde console et faites la commande suivante :
 
 ```bash
