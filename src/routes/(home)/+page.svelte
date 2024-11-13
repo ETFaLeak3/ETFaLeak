@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { toast } from "svelte-sonner";
     import { Button } from '$lib/components/ui/button';
     import { Badge } from '$lib/components/ui/badge';
     import Title from '$lib/components/ui/title/Title.svelte';
@@ -15,4 +16,17 @@
     <Button>Click me</Button>
     <Button variant="outline">Click me</Button>
     <Informations />
+    <Button
+        variant="outline"
+        onclick={() =>
+        toast.success("Event has been created", {
+            description: "Sunday, December 03, 2023 at 9:00 AM",
+            action: {
+            label: "Undo",
+            onClick: () => console.info("Undo")
+            }
+        })}
+    >
+        Show Toast
+    </Button>
 </div>

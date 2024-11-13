@@ -2,6 +2,7 @@
 	import '../app.css';
 	import 'animate.css';
     import { onMount, onDestroy } from "svelte";
+    import { Toaster } from "$lib/components/ui/sonner/index.js";
 
     let mounted;
 
@@ -19,5 +20,6 @@
 </script>
 
 <div class="animate__animated animate__fadeIn animate__faster">
+    <Toaster />
     {@render children()}
 </div>
