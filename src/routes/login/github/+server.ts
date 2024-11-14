@@ -1,14 +1,14 @@
 import { redirect } from "@sveltejs/kit";
 import { generateState } from "arctic";
-import { github } from "$lib/server/auth/oauth";
+import { github, scopesGithub } from "$lib/server/auth/oauth";
 
 import type { RequestEvent } from "@sveltejs/kit";
 
-export async function GET(event: RequestEvent): Promise<Response> {
+export const GET = async ({ cookies }) => {
 	const state = generateState();
-	const url = github.createAuthorizationURL(state, []);
+	const url = github.createAuthorizationURL(state, scopesGithub);
 
-	event.cookies.set("github_oauth_state", state, {
+	cookies.set("github_oauth_state", state, {
 		path: "/",
 		httpOnly: true,
 		maxAge: 60 * 10,
