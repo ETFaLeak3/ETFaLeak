@@ -1,8 +1,5 @@
 import { redirect } from "@sveltejs/kit";
-
-import { eq } from 'drizzle-orm';
-import { db } from '$lib/server/db';
-import * as table from '$lib/server/db/schema';
+import { getUserInfo } from "$lib/db.js";
 
 export const load = async ({ locals }) => {
   // Permet de protéger la page profile
@@ -11,7 +8,7 @@ export const load = async ({ locals }) => {
   }
 
   // Récupère le profil de l'utilisateur
-  const userProfile = (await db.select().from(table.user).where(eq(table.user.id, locals.user.id))).at(0);
+  const userProfile = await getUserInfo(locals.user.id);
 
   // Retourne les données à la page, accessible via `data.session` et `data.userProfile`, il faut `export let data` dans +page.svelte
   return {
