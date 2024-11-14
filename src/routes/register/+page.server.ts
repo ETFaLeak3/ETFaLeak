@@ -82,3 +82,10 @@ export const actions: Actions = {
 		throw redirect(302, "/profile");
 	}
 };
+
+export const load = async ({ locals }) => {
+	// Permet de protéger la page profile
+	if (locals.session || locals.user) {
+	  redirect(302, "/profile");
+	}
+}
