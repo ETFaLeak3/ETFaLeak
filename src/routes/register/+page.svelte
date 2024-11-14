@@ -19,38 +19,33 @@
   <div
     class="sm:w-6/12 flex p-6 border border-gray-300 shadow-md rounded-md flex-col gap-8 items-center"
   >
-    <form method="post" use:enhance class="flex flex-col items-center gap-4">
-      <h1 class="text-2xl text-gray-700 font-bold">Sign in with Credentials</h1>
-      <Input
+    <form method="post" use:enhance action="http://localhost:5173/register" class="flex flex-col items-center gap-4">
+        <h1 class="text-2xl text-gray-700 font-bold">Sign up with Credentials</h1>
+        <Input
         type="email"
         placeholder="Email"
         name="email"
-      />
+        />
 
-      <Input
+        <Input
+        type="text"
+        placeholder="Username"
+        name="username"
+        />
+
+        <Input
         type="password"
         placeholder="Password"
         name="password"
-      />
+        />
 
-      <div class="flex flex-row gap-8">
-          <Button
-          type="submit"
-          >
-              Login
-          </Button>
-      </div>
+        <div class="flex flex-row gap-8">
+            <Button
+              type="submit"
+            >
+                Register
+            </Button>
+        </div>
     </form>
-
-    <Separator />
-
-    <h1 class="text-2xl text-gray-700 font-bold">Login with Google</h1>
-
-    <Button
-      href="/login/google"
-      type="button"
-    >
-      Login
-    </Button>
   </div>
 </div>

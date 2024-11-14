@@ -22,6 +22,7 @@ export const user = sqliteTable('user', {
     ...timestamp,
     id: text('id').primaryKey().notNull().$defaultFn(() => generateId(15)),
     email: text('email').notNull().unique(),
+    username: text('username').notNull(),
     passwordHash: text('password_hash'),
     profilePicture: text('profile_picture'),
     refreshToken: text('refresh_token'),

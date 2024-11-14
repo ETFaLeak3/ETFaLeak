@@ -38,7 +38,6 @@ export const GET = async ({ url, cookies }) => {
 
     if (tokens.refreshToken) {
       googleRefreshToken = await google.refreshAccessToken(tokens.refreshToken());
-      console.log('googleRefreshToken', googleRefreshToken);
     }
 
     const googleUserResponse = await fetch(
@@ -70,13 +69,15 @@ export const GET = async ({ url, cookies }) => {
         email: googleUser.email,
         refreshToken: googleRefreshToken?.data.access_token,
         profilePicture: googleUser.picture,
+        username: googleUser.given_name,
       }).where(eq(table.user.id, existingUser.id));
 
     } else {
       const newUser = await db.insert(table.user).values({
         email: googleUser.email,
         refreshToken: googleRefreshToken?.data.access_token,
-        profilePicture: googleUser.picture
+        profilePicture: googleUser.picture,
+        username: googleUser.given_name,
         }).returning().get();
 
       const sessionToken = auth.generateSessionToken();
