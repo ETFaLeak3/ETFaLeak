@@ -1,3 +1,4 @@
+import { github } from '$lib/server/auth/oauth';
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 export const generateId = (length : number) => {
@@ -21,6 +22,7 @@ const timestamp = {
 export const user = sqliteTable('user', {
     ...timestamp,
     id: text('id').primaryKey().notNull().$defaultFn(() => generateId(15)),
+    githubId: text('github_id').unique(),
     email: text('email').notNull().unique(),
     username: text('username').notNull(),
     passwordHash: text('password_hash'),

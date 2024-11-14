@@ -67,10 +67,10 @@ export const actions: Actions = {
 			// check for unique constraint error in user table
 			if (
 				e instanceof Error &&
-                e.message.includes("UNIQUE constraint failed: user.username")
+                e.message.includes("UNIQUE constraint failed: user.email")
 			) {
 				return fail(400, {
-					message: "Username already taken"
+					message: "Email already taken"
 				});
 			}
 			return fail(500, {

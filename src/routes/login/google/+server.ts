@@ -1,5 +1,5 @@
 import { dev } from "$app/environment";
-import { google, scopes } from "$lib/server/auth/oauth";
+import { google, scopesGoogle } from "$lib/server/auth/oauth";
 import { redirect } from "@sveltejs/kit";
 import { generateState } from "arctic";
 import { generateId } from "lucia";
@@ -7,7 +7,7 @@ import { generateId } from "lucia";
 export const GET = async ({ cookies }) => {
   const state = generateState();
   const codeVerifier = generateId(32);
-  const url = await google.createAuthorizationURL(state, codeVerifier, scopes);
+  const url = await google.createAuthorizationURL(state, codeVerifier, scopesGoogle);
 
   url.searchParams.set("access_type", "offline");
 

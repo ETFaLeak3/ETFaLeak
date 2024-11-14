@@ -48,7 +48,13 @@
       href="/login/google"
       type="button"
     >
-      Login
+      Login with Google
+    </Button>
+    <Button
+      href="/login/github"
+      type="button"
+    >
+      Login with Github
     </Button>
   </div>
 </div>
