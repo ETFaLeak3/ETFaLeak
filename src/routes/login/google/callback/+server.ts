@@ -51,7 +51,7 @@ export const GET = async ({ url, cookies }) => {
 
     const googleUser = await googleUserResponse.json();
 
-    let existingUser = await (await db.select().from(table.user).where(eq(table.user.email, googleUser.email))).at(0);
+    const existingUser = await (await db.select().from(table.user).where(eq(table.user.email, googleUser.email))).at(0);
 
     if (existingUser != undefined) {
       const sessionToken = auth.generateSessionToken();
@@ -82,7 +82,6 @@ export const GET = async ({ url, cookies }) => {
 
       const sessionToken = auth.generateSessionToken();
       const session = await auth.createSession(sessionToken, newUser.id);
-
       const sessionCookie = lucia.createSessionCookie(session.id);
 
       cookies.set(sessionCookie.name, sessionCookie.value, {
