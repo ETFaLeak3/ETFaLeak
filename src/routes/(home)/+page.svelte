@@ -7,6 +7,15 @@
     import Texte from '$lib/components/ui/texte/Texte.svelte';
     import Informations from '$lib/components/ui/informations/Informations.svelte';
     import Combobox from "$lib/components/ui/combobox/Combobox.svelte";
+    import { afterNavigate } from "$app/navigation";
+
+    export let data;
+
+    afterNavigate(({from}) => {
+      if (from?.url.pathname === "/profile" && data?.status == "noSession") {
+        toast.success("You have been successfully logged out");
+      }
+    });
 </script>
 
 <div class="w-screen h-screen flex flex-col gap-8 px-48 py-16 bg-noise">

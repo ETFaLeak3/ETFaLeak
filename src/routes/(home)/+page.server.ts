@@ -2,13 +2,6 @@ import * as auth from '$lib/server/auth';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async (event) => {
-	if (!event.locals.user) {
-		return redirect(302, '/login');
-	}
-	return { user: event.locals.user };
-};
-
 export const actions: Actions = {
 	default: async (event) => {
 		if (!event.locals.session) {
@@ -17,6 +10,19 @@ export const actions: Actions = {
 		await auth.invalidateSession(event.locals.session.id);
 		auth.deleteSessionTokenCookie(event);
 
-		return redirect(302, '/login');
+		throw redirect(302, '/');
 	},
 };
+
+export const load = async ({ locals }) => {
+	
+	if (!locals.session || !locals.user) {
+	  return {
+		status: "noSession",
+	  }
+	}
+	return {
+		status: "session",
+	};
+
+  };

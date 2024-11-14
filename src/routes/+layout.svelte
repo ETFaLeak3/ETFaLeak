@@ -19,7 +19,10 @@
 	let { children } = $props();
 </script>
 
+<svelte:head>
+    <title>App</title>
+</svelte:head>
 <div class="animate__animated animate__fadeIn animate__faster">
-    <Toaster />
+    <Toaster richColors />
     {@render children()}
 </div>

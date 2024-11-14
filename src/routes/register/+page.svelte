@@ -1,19 +1,16 @@
 <script lang="ts">
     import { Button } from '$lib/components/ui/button';
     import { Input } from '$lib/components/ui/input';
-    import { Separator } from '$lib/components/ui/separator';
     import { enhance } from "$app/forms";
     import { page } from '$app/stores';
+    import { toast } from "svelte-sonner";
     
     $: {
-        console.log($page.status);
-        console.log($page.error);
+        if ($page.status != 200) {
+            toast.error($page.form?.message as string);
+        }
     }
 </script>
-
-<svelte:head>
-  <title>Login with Google</title>
-</svelte:head>
 
 <div class="max-w-5xl mx-auto px-4 flex items-center justify-center h-screen">
   <div

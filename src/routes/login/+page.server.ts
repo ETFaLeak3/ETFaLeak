@@ -9,6 +9,9 @@ import * as table from '$lib/server/db/schema';
 
 import type { Actions } from "./$types";
 
+import { toast } from "svelte-sonner";
+import { message } from 'sveltekit-superforms';
+
 export const actions: Actions = {
 	default: async ({ request, locals, cookies }) => {
 
@@ -41,7 +44,7 @@ export const actions: Actions = {
             
 			if (!key) {
 				return fail(400, {
-					message: "Incorrect username or password"
+					message: "Incorrect email or password"
 				});
 			}
 
@@ -51,12 +54,10 @@ export const actions: Actions = {
 				});
 			}
 
-			console.log(key.passwordHash);
-
 			const isValid = await verify(key.passwordHash, password);
 			if (!isValid) {
 				return fail(400, {
-					message: "Incorrect username or password"
+					message: "Incorrect email or password"
 				});
 			}
 
@@ -79,7 +80,7 @@ export const actions: Actions = {
 				// user does not exist
 				// or invalid password
 				return fail(400, {
-					message: "Incorrect username or password"
+					message: "Incorrect email or password"
 				});
 			}
 			console.log(e);
@@ -89,6 +90,6 @@ export const actions: Actions = {
 		}
 		// redirect to
 		// make sure you don't throw inside a try/catch block!
-		throw redirect(302, "/profile");
+		throw redirect(303, "/profile");
 	}
 };

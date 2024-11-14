@@ -45,7 +45,7 @@ export const actions: Actions = {
 		}
 		// hash password
 		const passwordHash = await hash(password);
-		console.log(passwordHash);
+
 		try {
 			const newUser = await db.insert(table.user).values({
                 email,
