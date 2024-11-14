@@ -20,7 +20,9 @@ export async function createSession(token: string, userId: string) {
 	const session: table.Session = {
 		id: sessionId,
 		userId,
-		expiresAt: new Date(Date.now() + DAY_IN_MS * 30)
+		expiresAt: new Date(Date.now() + DAY_IN_MS * 30),
+		createdAt: Date.now(),
+		updatedAt: Date.now()
 	};
 	await db.insert(table.session).values(session);
 	return session;
@@ -31,7 +33,7 @@ export async function validateSessionToken(token: string) {
 	const [result] = await db
 		.select({
 			// Adjust user table here to tweak returned data
-			user: { id: table.user.id, username: table.user.username },
+			user: { id: table.user.id, email: table.user.email },
 			session: table.session
 		})
 		.from(table.session)
