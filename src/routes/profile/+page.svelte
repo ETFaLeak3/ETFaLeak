@@ -1,7 +1,7 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
     import { toast } from "svelte-sonner";
-    import { afterNavigate } from "$app/navigation";
+    import { onMount } from "svelte";
     
     import * as Avatar from "$lib/components/ui/avatar";
     import { Button } from "$lib/components/ui/button";
@@ -10,19 +10,13 @@
     import { Label } from "$lib/components/ui/label";
     
     export let data;
-  
-    const title = data.userProfile?.email
-      ? `${data.userProfile?.username} profile`
-      : "Profile";
 
-    afterNavigate(({from}) => {
-      if (from?.url.pathname === "/login") {
+    onMount(() => {
+      if (data.loginSuccess) {
         toast.success("You have been successfully logged in");
       }
-      else if (from?.url.pathname === "/register") {
-        toast.success("You have been successfully registered");
-      }
     });
+    
 </script>
 
 <main class="w-screen h-screen">
@@ -30,7 +24,7 @@
         <div
             class="sm:w-6/12 flex p-6 border border-gray-300 shadow-md rounded-md flex-col gap-8 items-center"
         >
-            <h1 class="text-2xl text-gray-700 font-bold">{title}</h1>
+            <h1 class="text-2xl text-gray-700 font-bold">{data.userProfile?.username} profile</h1>
             <Avatar.Root>
                 <Avatar.Image src={data.userProfile?.profilePicture} alt={data.userProfile?.username} />
                 <Avatar.Fallback>{data.userProfile?.username.slice(0, 2).toUpperCase()}</Avatar.Fallback>

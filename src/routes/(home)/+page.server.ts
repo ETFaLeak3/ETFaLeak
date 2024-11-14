@@ -10,19 +10,16 @@ export const actions: Actions = {
 		await auth.invalidateSession(event.locals.session.id);
 		auth.deleteSessionTokenCookie(event);
 
-		throw redirect(302, '/');
+		throw redirect(302, '/?logoutSuccess=true');
 	},
 };
 
-export const load = async ({ locals }) => {
+export const load = async ({ url }) => {
 	
-	if (!locals.session || !locals.user) {
-	  return {
-		status: "noSession",
-	  }
-	}
+	const logoutSuccess = url.searchParams.get('logoutSuccess') === 'true';
+
 	return {
-		status: "session",
+		logoutSuccess,
 	};
 
-  };
+};

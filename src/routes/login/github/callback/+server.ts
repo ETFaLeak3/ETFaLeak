@@ -82,7 +82,7 @@ export const GET = async ({ url, cookies }) => {
         return new Response(null, {
             status: 302,
             headers: {
-              Location: "/profile",
+              Location: "/profile?loginSuccess=true",
             },
           });
         } catch (error) {
