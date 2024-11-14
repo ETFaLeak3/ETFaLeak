@@ -23,7 +23,6 @@
         toast.success("You have been successfully registered");
       }
     });
-
 </script>
 
 <main class="w-screen h-screen">
@@ -36,20 +35,26 @@
                 <Avatar.Image src={data.userProfile?.profilePicture} alt={data.userProfile?.username} />
                 <Avatar.Fallback>{data.userProfile?.username.slice(0, 2).toUpperCase()}</Avatar.Fallback>
             </Avatar.Root>
-            <Input
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={data.userProfile?.email}
-                readonly
-            />
-            <Input
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={data.userProfile?.username}
-                readonly
-            />
+            <div class="flex flex-row gap-4 w-full items-center">
+              <Label>Email</Label>
+              <Input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={data.userProfile?.email}
+                  readonly
+              />
+            </div>
+            <div class="flex flex-row gap-4 w-full items-center">
+              <Label>Username</Label>
+              <Input
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  value={data.userProfile?.username}
+                  readonly
+              />
+            </div>
             <Separator />
             <form method="post" action="http://localhost:5173/" use:enhance>
               <Button type="submit">
