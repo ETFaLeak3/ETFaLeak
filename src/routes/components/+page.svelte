@@ -23,6 +23,7 @@
     import Texte from "$lib/components/ui/texte/Texte.svelte";
     import { toast } from "svelte-sonner";
     import Title from "$lib/components/ui/title/Title.svelte";
+    import ProfileAvatar from "$lib/components/ui/profileAvatar/ProfileAvatar.svelte";
 
     // Other import
 
@@ -89,6 +90,7 @@
 </script>
 
 <div class="w-screen h-fit flex flex-col items-center gap-8 px-32 py-4">
+    <ProfileAvatar src="https://picsum.photos/200/200" alt="@shadcn" Fallback="CN" />
 
     <Label>Accordion</Label>
 
