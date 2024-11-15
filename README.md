@@ -60,7 +60,7 @@ Cela aura pour effet d'installer les dépendances **NodeJS** du projet.
 
 <br/>
 
-### 💻 Lancer le projet en mode développement
+### 💻 Premier lancement
 
 Avant tout, veuillez __dupliquer__ le fichier `.env.example` et le __renommer__ en `.env`. Vous pouvez le faire en ligne de commande ou directement dans l'explorateur de fichiers.
 
@@ -73,6 +73,24 @@ Ensuite, vous devez créez une dossier `database` à la racine du projet. C'est 
 ```bash
 mkdir database
 ```
+
+Enfin, vous devez générer la base de données. Pour cela, exécutez la commande suivante :
+
+```bash
+pnpm db:push
+```
+
+(Si vous n'avez pas installé **pnpm**, vous pouvez remplacer `pnpm` par `npm`)
+
+```bash
+npm run db:push
+```
+
+Ici, vous devrez choisir dans le terminal la réponse `Yes, I want to execute all statements` avec les flèches directionnelles et la touche `Enter`.
+
+<br/>
+
+### 💻 Lancer le projet en mode développement
 
 Maintenant, vous allez devoir lancer le serveur de développement du **front-end**. Rendez-vous dans votre seconde console et faites la commande suivante :
 
