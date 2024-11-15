@@ -90,7 +90,6 @@
 </script>
 
 <div class="w-screen h-fit flex flex-col items-center gap-8 px-32 py-4">
-    <ProfileAvatar src="https://picsum.photos/200/200" alt="@shadcn" Fallback="CN" />
 
     <Label>Accordion</Label>
 

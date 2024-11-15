@@ -3,7 +3,7 @@
     import { toast } from "svelte-sonner";
     import { onMount } from "svelte";
     
-    import * as Avatar from "$lib/components/ui/avatar";
+    import ProfileAvatar from "$lib/components/ui/profileAvatar/ProfileAvatar.svelte";
     import { Button } from "$lib/components/ui/button";
     import { Input } from "$lib/components/ui/input";
     import { Separator } from "$lib/components/ui/separator";
@@ -25,10 +25,7 @@
             class="sm:w-6/12 flex p-6 border border-gray-300 shadow-md rounded-md flex-col gap-8 items-center"
         >
             <h1 class="text-2xl text-gray-700 font-bold">{data.userProfile?.username} profile</h1>
-            <Avatar.Root>
-                <Avatar.Image src={data.userProfile?.profilePicture} alt={data.userProfile?.username} />
-                <Avatar.Fallback>{data.userProfile?.username.slice(0, 2).toUpperCase()}</Avatar.Fallback>
-            </Avatar.Root>
+            <ProfileAvatar src={data.userProfile?.profilePicture} alt={data.userProfile?.username} Fallback={data.userProfile?.username.slice(0, 2).toUpperCase()} />
             <div class="flex flex-row gap-4 w-full items-center">
               <Label>Email</Label>
               <Input

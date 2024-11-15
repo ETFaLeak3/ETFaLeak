@@ -16,3 +16,7 @@ type Result = {
 export const getUserInfo = async (id: string) => {
     return (await (await db.select().from(table.user).where(eq(table.user.id, id))).at(0)) as Result;
 }
+
+export const updateUserProfilePicture = async (id: string, profilePicture: string) => {
+    return await db.update(table.user).set({ profilePicture }).where(eq(table.user.id, id));
+}
