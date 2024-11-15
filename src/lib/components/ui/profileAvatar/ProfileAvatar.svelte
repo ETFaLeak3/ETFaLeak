@@ -6,8 +6,8 @@
     let {
         src,
         alt,
-        Fallback,
-    }: { src: string | null | undefined, alt: string | null | undefined, Fallback: string | null | undefined } = $props();
+        fallback,
+    }: { src: string | null | undefined, alt: string | null | undefined, fallback: string | null | undefined } = $props();
 
     const checkFile = (file: File | undefined) => {
         if (!file) {
@@ -44,15 +44,19 @@
         // On fait une requete POST sur http://localhost:5173/API/users/avatars/updateAvatar avec le fichier et le filepath en paramètre
         // Utilise un FormData pour envoyer le fichier
         const data = new FormData();
-        // @ts-ignore
-        data.append("file", file);
-        const res = fetch("http://localhost:5173/API/users/avatar/updateAvatar", {
+        const name = crypto.randomUUID()+file?.name;
+        if (file) {
+            data.append("file", file);
+        }
+        data.append("filename", name);
+        fetch("http://localhost:5173/API/users/avatar/updateAvatar", {
             method: "POST",
             body: data,
         }).then((res) => {
             console.log(res);
             if (res.ok) {
                 toast.success("Avatar updated successfully");
+                src = '/images/avatars/'+name;
             } else {
                 toast.error("An error occurred while updating the avatar");
             }
@@ -61,9 +65,9 @@
 </script>
 
 <div class="flex flex-col items-center">
-    <Avatar.Root>
+    <Avatar.Root class="size-20">
         <Avatar.Image src={src ? src : null} alt={alt ? alt : null}/>
-        <Avatar.Fallback>{Fallback}</Avatar.Fallback>
+        <Avatar.Fallback>{fallback}</Avatar.Fallback>
     </Avatar.Root>
     <input type="file" name="file" id="file" accept="image/png, image/jpeg, image/webp" oninput={(e) => {updateAvatar(e)}} class="w-0 h-0 opacity-0 overflow-hidden absolute z-[-1]"/>
     <div class="bg-white border border-black w-fit h-fit p-1 rounded-full cursor-pointer relative -top-6 -right-5">
