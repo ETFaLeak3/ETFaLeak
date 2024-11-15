@@ -55,11 +55,11 @@ export const GET = async ({ url, cookies }) => {
             });
 
             // Update the user's data
-            await db.update(table.user).set({
+            /* await db.update(table.user).set({
                 username: githubUser.login,
                 email: githubUser.email,
                 profilePicture: githubUser.avatar_url,
-            }).where(eq(table.user.id, existingUser.id));
+            }).where(eq(table.user.id, existingUser.id)); */
 
         } else {
             const newUser = await db.insert(table.user).values({

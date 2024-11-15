@@ -11,6 +11,6 @@
 
 <AvatarPrimitive.Root
 	bind:ref
-	class={cn("relative flex size-20 shrink-0 overflow-hidden rounded-full border border-black", className)}
+	class={cn("relative flex size-10 shrink-0 overflow-hidden rounded-full border border-black", className)}
 	{...restProps}
 />

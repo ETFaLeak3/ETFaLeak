@@ -64,13 +64,13 @@ export const GET = async ({ url, cookies }) => {
       });
 
       // Update the user's data
-      await db.update(table.user).set({
+      /* await db.update(table.user).set({
         id: existingUser.id,
         email: googleUser.email,
         refreshToken: googleRefreshToken?.data.access_token,
         profilePicture: googleUser.picture,
         username: googleUser.given_name,
-      }).where(eq(table.user.id, existingUser.id));
+      }).where(eq(table.user.id, existingUser.id)); */
 
     } else {
       const newUser = await db.insert(table.user).values({
